@@ -1,0 +1,46 @@
+class Empresa:
+    def __init__(self, nombre):
+        self.nombre = nombre
+
+class Empleado:
+    def __init__(self, nombre):
+        self.nombre = nombre
+
+class Edificio:
+    def __init__(self, nombre, propietario):
+        self.nombre = nombre
+        self.propietario = propietario
+
+    def __del__(self):
+        print(f"El edificio {self.nombre} ha sido destruido")
+
+class Ciudad:
+    def __init__(self, nombre):
+        self.nombre = nombre
+        self.edificios = []
+
+    def destruir(self):
+        del self.edificios[:]
+        print(f"La ciudad de {self.nombre} ha sido destruida")
+
+class CiudadConEdificios(Ciudad):
+    def __init__(self, nombre, edificios):
+        super().__init__(nombre)
+        self.edificios = edificios
+
+    def __del__(self):
+        print(f"La ciudad de {self.nombre} ha sido destruida")
+        for edificio in self.edificios:
+            del edificio
+
+
+
+empresa = Empresa("YooHoo!")
+edificios_ny = [Edificio("A", empresa), Edificio("B", empresa)]
+edificios_la = [Edificio("C", empresa)]
+
+ny = CiudadConEdificios("Nueva York", edificios_ny)
+la = CiudadConEdificios("Los Angeles", edificios_la)
+
+ny.destruir()
+
