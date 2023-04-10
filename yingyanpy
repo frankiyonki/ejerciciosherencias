@@ -1,0 +1,33 @@
+
+class Yin:
+    pass
+
+class Yang:
+    def cleanup(self):
+        print("Yang destruido")
+
+yin = Yin()
+yang = Yang()
+yin.yang = yang
+
+print(yang)
+print(yang is yin.yang)
+
+yin.yang = None
+yang.cleanup()
+print("?")
+
+'''
+En Python, cuando ya no necesitas un objeto, 
+Python lo elimina usando algo llamado "recolección de basura". 
+Pero no sabes cuándo sucederá exactamente. 
+Por eso, si necesitas hacer algo importante cuando ya no necesites un objeto,
+no puedes confiar en el método __del__ para hacerlo. 
+En cambio, es mejor que hagas un método especial, como close() o cleanup(), 
+que haga lo que necesitas. Así, 
+cuando estés seguro de que ya no necesitas el objeto, 
+puedes llamar a ese método especial para hacer lo que necesitas hacer. 
+De esta manera, te aseguras de que las cosas importantes se hagan a tiempo 
+y evitas problemas inesperados en tu código.
+ '''
+
