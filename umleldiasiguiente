@@ -1,3 +1,4 @@
+@startuml
 class Empresa {
     - nombre: str
     + __init__(nombre: str)
@@ -31,3 +32,7 @@ class CiudadConEdificios {
 Empresa --> Edificio
 Edificio --> CiudadConEdificios
 Ciudad --> CiudadConEdificios
+
+
+@enduml
+
