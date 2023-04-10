@@ -1,0 +1,28 @@
+@startuml
+
+class ParedCortina {
+  - alto: int
+  - ancho: int
+  - material: str
+  + __init__(alto: int, ancho: int, material: str)
+}
+
+class Ventana {
+  - precio_tipo_cierre: float
+  + abrir()
+  + cerrar()
+  + __init__(alto: int, ancho: int, material: str, precio_tipo_cierre: float)
+}
+
+class Cristal {
+  - precio_por_metro_cuadrado: float
+  + calcular_costo(precio_por_metro_cuadrado: float)
+  + __init__(precio_por_metro_cuadrado: float, alto: int, ancho: int, material: str, precio_tipo_cierre: float)
+}
+
+ParedCortina <|-- Ventana
+ParedCortina <|-- Cristal
+Ventana <|-- Cristal
+
+
+@enduml
