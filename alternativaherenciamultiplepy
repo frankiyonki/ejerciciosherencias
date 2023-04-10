@@ -1,0 +1,70 @@
+'''
+En el último ejercicio de la sección sobre la herencia, se mostraron los límites de la herencia múltiple:
+acoplamientos de clases cuyo vínculo no es tan obvio, atajos tomados en el código que tienen mucho riesgo de error.
+Este ejercicio utiliza otro enfoque del problema: la asociación (ya sea composición o agregación).
+Enunciado: comenzando con el mismo código que el ejercicio sobre herencia múltiple,
+cree una clase que agrupe el comportamiento común entre las clases Ventana y ParedCortina.
+Enunciado: modifique las clases Ventana y ParedCortina para que usen esta nueva clase-interfaz Cristal.
+Enunciado: modifique el código para que el programa funcione de nuevo.
+'''
+
+'''
+Hola buenas Ruben,
+Como no he encontrado 'el último ejercicio de la sección sobre la herencia', le he preguntado a chat GTP que me cree
+clases llamadas Ventana y ParedCortina con funciones que podrian tener unas clases llamadas así, desde estas clases he
+lo que me pedian los enunciados.
+
+Te dejo primero lo que me ha generado CHATGTP y luego como lo he modificado yo:
+'''
+class ParedCortina:
+    def __init__(self, alto, ancho, material):
+        self.alto = alto
+        self.ancho = ancho
+        self.material = material
+
+    def calcular_costo(self, precio_por_metro_cuadrado):
+        area = self.alto * self.ancho
+        costo = area * precio_por_metro_cuadrado
+        return costo
+
+class Ventana(ParedCortina):
+    def __init__(self, alto, ancho, material, tipo_cierre):
+        super().__init__(alto, ancho, material)
+        self.tipo_cierre = tipo_cierre
+
+    def abrir(self):
+        print("Abriendo la ventana...")
+
+    def cerrar(self):
+        print("Cerrando la ventana...")
+
+
+#estas son las modificaciones:
+
+class ParedCortina:
+    def __init__(self, alto, ancho, material):
+        self.alto = alto
+        self.ancho = ancho
+        self.material = material
+
+
+class Ventana(ParedCortina):
+    def __init__(self, alto, ancho, material, precio_tipo_cierre):
+        super().__init__(alto, ancho, material)
+        self.precio_tipo_cierre = precio_tipo_cierre
+
+    def abrir(self):
+        print("Abriendo la ventana...")
+
+    def cerrar(self):
+        print("Cerrando la ventana...")
+
+class Cristal(Ventana, ParedCortina):
+    def __innit__(self,precio_por_metro_cuadrado,alto, ancho, material, precio_tipo_cierre):
+        super.__innit__(alto,ancho,material,precio_tipo_cierre)
+        self.precio_por_metro_cuadrado = precio_por_metro_cuadrado
+
+    def calcular_costo(self, precio_por_metro_cuadrado):
+        area = self.alto * self.ancho
+        costo = area * precio_por_metro_cuadrado
+        return costo
