@@ -1,0 +1,12 @@
+@startuml
+
+class Yin {}
+
+class Yang {
+  + cleanup()
+}
+
+Yin -- Yang
+
+@enduml
+
