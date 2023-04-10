@@ -1,0 +1,33 @@
+class Empresa {
+    - nombre: str
+    + __init__(nombre: str)
+}
+
+class Empleado {
+    - nombre: str
+    + __init__(nombre: str)
+}
+
+class Edificio {
+    - nombre: str
+    - propietario: Empresa
+    + __init__(nombre: str, propietario: Empresa)
+    + __del__()
+}
+
+class Ciudad {
+    - nombre: str
+    - edificios: List[Edificio]
+    + __init__(nombre: str)
+    + destruir()
+}
+
+class CiudadConEdificios {
+    - edificios: List[Edificio]
+    + __init__(nombre: str, edificios: List[Edificio])
+    + __del__()
+}
+
+Empresa --> Edificio
+Edificio --> CiudadConEdificios
+Ciudad --> CiudadConEdificios
